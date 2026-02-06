@@ -1,0 +1,44 @@
+# Customization Checklist
+
+Before deploying your Steady Step System site, customize these items:
+
+## Required Changes
+
+### 1. Site Configuration (mkdocs.yml)
+- [ ] Update `site_url` from `https://example.com` to your actual domain
+- [ ] Change `theme.palette.primary` if you want a different accent color (default: deep orange)
+- [ ] Update `theme.palette.accent` for different highlight color
+
+### 2. Contact & Personal Info
+Replace these placeholders throughout the site:
+- [ ] `{{CONTACT_FORM_URL}}` → Your actual contact form URL (appears in about/contact.md)
+- [ ] `{{HOST_NAME}}` → Your actual name (appears in about/about-me.md)
+- [ ] `{{TAGLINE_EN}}` → Customize if needed (currently: "A steady step toward a stronger body, mind, and life.")
+
+**Files to check:**
+- docs/about/contact.md
+- docs/about/about-me.md
+- docs/index.md
+
+### 3. Arabic Labels (Optional)
+If you want to add Arabic series names/labels:
+- [ ] Review docs/format-engine/series-architecture.md
+- [ ] Add Arabic equivalents in collapsible sections where noted
+- [ ] Keep them short and pan-Arab friendly (no country-specific slang)
+
+### 4. Branding & Visual Identity
+- [ ] Add your logo to `docs/assets/` and reference in mkdocs.yml under `theme.logo`
+- [ ] Consider adjusting CSS variables in `docs/assets/stylesheets/extra.css`:
+  - `--steady-primary` (default: #ff6b35)
+  - `--steady-secondary` (default: #f7931e)
+  - `--steady-accent` (default: #00d9ff)
+
+### 5. Social Links (Optional)
+Add social media links in mkdocs.yml under `extra`:
+```yaml
+extra:
+  social:
+    - icon: fontawesome/brands/youtube
+      link: YOUR_YOUTUBE_CHANNEL
+    - icon: fontawesome/brands/instagram
+      link: YOUR_INSTAGRAM

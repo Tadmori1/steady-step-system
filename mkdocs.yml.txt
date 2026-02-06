@@ -1,0 +1,97 @@
+site_name: Steady Step System
+site_url: https://example.com
+site_description: A steady step toward a stronger body, mind, and life.
+
+theme:
+  name: material
+  palette:
+    scheme: slate
+    primary: deep orange
+    accent: orange
+  font:
+    text: Inter
+    code: Roboto Mono
+  features:
+    - navigation.instant
+    - navigation.instant.progress
+    - navigation.instant.prefetch
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.sections
+    - navigation.path
+    - navigation.indexes
+    - toc.follow
+    - navigation.top
+    - content.tabs.link
+
+plugins:
+  - search
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+
+extra_css:
+  - assets/stylesheets/extra.css
+
+extra_javascript:
+  - assets/javascripts/extra.js
+
+nav:
+  - Home: index.md
+  - Format Engine:
+    - format-engine/index.md
+    - Overview: format-engine/overview.md
+    - 3-Level Ladder: format-engine/3-level-ladder.md
+    - Hook Library: format-engine/hook-library.md
+    - Formats: format-engine/formats.md
+    - Comment Machine: format-engine/comment-machine.md
+    - Series Architecture: format-engine/series-architecture.md
+  - Science → Screen:
+    - science-to-screen/index.md
+    - Motor Learning: science-to-screen/motor-learning.md
+    - Perceptual Skill: science-to-screen/perceptual-skill.md
+    - Habit & Discipline: science-to-screen/habit-discipline.md
+    - Pain & Training: science-to-screen/pain-training.md
+    - Recovery: science-to-screen/recovery.md
+    - Motivation & Identity: science-to-screen/motivation-identity.md
+  - Skills Track:
+    - skills-track/index.md
+    - Overview: skills-track/overview.md
+    - Stance & Footwork: skills-track/stance-footwork.md
+    - Guard & Distance: skills-track/guard-distance.md
+    - Striking (Hands): skills-track/striking-hands.md
+    - Kicking: skills-track/kicking.md
+    - Defense & Exits: skills-track/defense-exits.md
+    - Conditioning: skills-track/conditioning.md
+    - Sparring Literacy: skills-track/sparring-literacy.md
+  - Production Playbook:
+    - production-playbook/index.md
+    - Filming Setup: production-playbook/filming-setup.md
+    - Editing Rules: production-playbook/editing-rules.md
+    - Sound & Voice: production-playbook/sound-voice.md
+    - Visual Language: production-playbook/visual-language.md
+    - QA Checklist: production-playbook/qa-checklist.md
+    - Posting & Iteration: production-playbook/posting-iteration.md
+  - Research Shelf:
+    - research-shelf/index.md
+    - Research Shelf: research-shelf/research-shelf.md
+    - Biomechanics Fundamentals: research-shelf/biomechanics-fundamentals.md
+    - Force, Impulse & Momentum: research-shelf/force-impulse-momentum.md
+    - Linear vs Angular: research-shelf/linear-vs-angular.md
+    - Work, Energy & Power: research-shelf/work-energy-power.md
+  - About:
+    - about/index.md
+    - About Steady Step: about/about-steady-step.md
+    - About Me: about/about-me.md
+    - Lineage & Styles: about/lineage-styles.md
+    - Safety & Scope: about/safety-scope.md
+    - Contact: about/contact.md
+extra:
+  analytics:
+    provider: google
+    property: YOUR_GA_ID
+
