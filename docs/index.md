@@ -1,4 +1,3 @@
-markdown
 # Steady Step System
 
 <div class="hero-section">
@@ -20,6 +19,25 @@ Steady Step System helps sedentary Arab-speaking youth and young adults upgrade 
 - **Weekly YouTube** (8-15min): 7-day experiments with rules, baseline, story, and measurable results.
 
 This system targets six interconnected pillars: movement, mental resilience, courage, discipline, community accountability, and everyday health habits. We use a calm mentor voice with friendly humor, zero hype, and maximum practicality.
+
+## See It In Action
+
+Here's an example of a Weekly YouTube experiment format:
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; margin: 2rem 0;">
+  <iframe 
+    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" 
+    src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
+    title="Weekly Experiment Example" 
+    frameborder="0" 
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+    allowfullscreen>
+  </iframe>
+</div>
+
+*Replace the YouTube video ID above (`dQw4w9WgXcQ`) with your actual first video ID.*
+
+---
 
 ## Start Here
 
@@ -114,6 +132,8 @@ Each piece is designed to build on the others. Micro-missions drive DONE comment
 
 This isn't random posting. It's a machine that runs on small, measurable experiments and community participation.
 
+**See the complete calendar:** [30-Day Production Calendar](format-engine/30-day-calendar.md)
+
 ## Core Principles
 
 **Minimum is enough.**  
@@ -142,4 +162,4 @@ The system is ready. Your next steady step is to choose a section and dive in.
 
 ---
 
-**Questions or feedback?** Visit [Contact](about/contact.md).
+**Questions or feedback?** Visit [Contact](about/contact.md) | **Join the community:** [Guidelines](about/community-guidelines.md)
