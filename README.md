@@ -1,10 +1,15 @@
-# Steady Step System - MkDocs Site
+# Steady Step System (MkDocs + Material)
 
-A complete knowledge atlas for the Steady Step System: a lifestyle lab built on small, measurable experiments.
+A premium “knowledge atlas” for the Steady Step System: a lifestyle lab built on small, measurable experiments (Micro‑Missions, Real Youth Problems, weekly YouTube experiments).
 
-## Quick Start
+## What’s inside
 
-### Install Dependencies
+- `mkdocs.yml` — site configuration (theme, nav, plugins)
+- `docs/` — all site pages (Markdown)
+- `docs/assets/stylesheets/extra.css` — custom styling (sports‑tech lab look)
 
+## Quick start (local preview)
+
+### 1) Install
 ```bash
 pip install mkdocs-material
