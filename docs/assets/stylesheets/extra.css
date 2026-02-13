@@ -1,235 +1,473 @@
+/* ============================================================
+   Steady Step System — Neutral Premium Theme
+   Pure CSS · No external fonts/CDNs/images
+   ============================================================ */
+
+/* --- Design Tokens --- */
 :root {
-  --steady-primary: #ff6b35;
-  --steady-secondary: #f7931e;
-  --steady-dark: #0a0e27;
-  --steady-darker: #050812;
-  --steady-accent: #00d9ff;
-  --steady-grid: rgba(255, 107, 53, 0.08);
+  --ss-accent: #5b9fa4;          /* calm teal — the ONE accent   */
+  --ss-accent-soft: rgba(91, 159, 164, 0.12);
+  --ss-accent-hover: #74b5ba;
+
+  --ss-bg:       #111111;
+  --ss-bg-card:  #1a1a1a;
+  --ss-bg-elev:  #222222;        /* elevated surfaces            */
+  --ss-border:   #2e2e2e;
+  --ss-border-lt:#3a3a3a;
+
+  --ss-text:     #d8d8d8;        /* primary text                 */
+  --ss-text-dim: #999999;        /* secondary / muted            */
+  --ss-text-bright: #f0f0f0;     /* headings, emphasis           */
+  --ss-white:    #ffffff;
+
+  --ss-radius:   6px;
+  --ss-radius-lg:10px;
+  --ss-shadow:   0 2px 12px rgba(0,0,0,0.45);
+  --ss-shadow-lg:0 6px 24px rgba(0,0,0,0.55);
+
+  /* Semantic */
+  --ss-warn:     #d4a24e;
+  --ss-tip:      #5dab5e;
+  --ss-note:     var(--ss-accent);
 }
 
+/* ============================================================
+   1. BASE / BODY
+   ============================================================ */
 body {
-  background: linear-gradient(135deg, var(--steady-darker) 0%, var(--steady-dark) 100%);
-  position: relative;
+  background: var(--ss-bg);
+  color: var(--ss-text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-body::before {
-  content: '';
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: 
-    linear-gradient(rgba(255, 107, 53, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 107, 53, 0.03) 1px, transparent 1px);
-  background-size: 50px 50px;
-  pointer-events: none;
-  z-index: 0;
-}
+/* Kill the old grid overlay */
+body::before { display: none; }
 
-.md-main__inner {
-  position: relative;
-  z-index: 1;
-}
+.md-main__inner { position: relative; z-index: 1; }
 
+/* ============================================================
+   2. CONTENT SURFACE
+   ============================================================ */
 .md-content {
-  background: rgba(10, 14, 39, 0.6);
-  backdrop-filter: blur(10px);
-  border-radius: 8px;
-  padding: 2rem;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  background: var(--ss-bg-card);
+  border: 1px solid var(--ss-border);
+  border-radius: var(--ss-radius-lg);
+  padding: 2.25rem 2.5rem;
+  box-shadow: var(--ss-shadow);
+  margin-top: 0.5rem;
+}
+
+@media (max-width: 76.25em) {
+  .md-content { padding: 1.5rem 1.25rem; }
+}
+
+/* ============================================================
+   3. TYPOGRAPHY
+   ============================================================ */
+.md-typeset {
+  font-size: 0.92rem;
+  line-height: 1.75;
+  color: var(--ss-text);
 }
 
 .md-typeset h1 {
-  color: var(--steady-primary);
+  color: var(--ss-text-bright);
   font-weight: 700;
-  border-bottom: 2px solid var(--steady-primary);
-  padding-bottom: 0.5rem;
-  margin-bottom: 1.5rem;
+  font-size: 2rem;
+  letter-spacing: -0.02em;
+  border-bottom: 2px solid var(--ss-accent);
+  padding-bottom: 0.45rem;
+  margin: 0 0 1.6rem;
 }
 
 .md-typeset h2 {
-  color: var(--steady-secondary);
+  color: var(--ss-text-bright);
   font-weight: 600;
-  margin-top: 2rem;
-  border-left: 4px solid var(--steady-secondary);
-  padding-left: 1rem;
+  font-size: 1.45rem;
+  letter-spacing: -0.01em;
+  margin: 2.4rem 0 1rem;
+  border-left: 3px solid var(--ss-accent);
+  padding-left: 0.85rem;
 }
 
 .md-typeset h3 {
-  color: var(--steady-accent);
+  color: var(--ss-accent-hover);
   font-weight: 600;
+  font-size: 1.15rem;
+  margin: 1.8rem 0 0.6rem;
 }
 
+.md-typeset h4,
+.md-typeset h5,
+.md-typeset h6 {
+  color: var(--ss-text-dim);
+  font-weight: 600;
+  margin: 1.4rem 0 0.5rem;
+}
+
+.md-typeset p        { margin: 0 0 1.15rem; }
+.md-typeset li + li  { margin-top: 0.3rem; }
+
+/* Links */
+.md-typeset a {
+  color: var(--ss-accent);
+  text-decoration: underline;
+  text-decoration-color: rgba(91,159,164,0.35);
+  text-underline-offset: 2px;
+  transition: color 0.15s, text-decoration-color 0.15s;
+}
+.md-typeset a:hover,
+.md-typeset a:focus-visible {
+  color: var(--ss-accent-hover);
+  text-decoration-color: var(--ss-accent-hover);
+}
+
+/* Strong / em */
+.md-typeset strong { color: var(--ss-text-bright); }
+
+/* ============================================================
+   4. CODE BLOCKS
+   ============================================================ */
+.md-typeset code {
+  background: var(--ss-bg-elev);
+  color: var(--ss-accent-hover);
+  padding: 0.15em 0.4em;
+  border-radius: 3px;
+  font-size: 0.85em;
+  border: 1px solid var(--ss-border);
+}
+
+.md-typeset pre {
+  margin: 1.25rem 0;
+}
+
+.md-typeset pre > code {
+  display: block;
+  background: var(--ss-bg);
+  border: 1px solid var(--ss-border);
+  border-radius: var(--ss-radius);
+  padding: 1.1rem 1.25rem;
+  font-size: 0.84rem;
+  line-height: 1.65;
+  color: var(--ss-text);
+  overflow-x: auto;
+}
+
+/* ============================================================
+   5. TABLES
+   ============================================================ */
+.md-typeset table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  border: 1px solid var(--ss-border);
+  border-radius: var(--ss-radius);
+  overflow: hidden;
+  background: var(--ss-bg-card);
+  margin: 1.5rem 0;
+  font-size: 0.88rem;
+}
+
+.md-typeset table thead {
+  background: var(--ss-bg-elev);
+}
+
+.md-typeset table th {
+  color: var(--ss-text-bright);
+  font-weight: 600;
+  text-align: left;
+  padding: 0.75rem 1rem;
+  border-bottom: 2px solid var(--ss-accent);
+}
+
+.md-typeset table td {
+  padding: 0.65rem 1rem;
+  border-bottom: 1px solid var(--ss-border);
+  color: var(--ss-text);
+}
+
+.md-typeset table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.md-typeset table tbody tr:hover {
+  background: var(--ss-accent-soft);
+}
+
+/* ============================================================
+   6. DETAILS / ACCORDIONS
+   ============================================================ */
 .md-typeset details {
-  background: rgba(255, 107, 53, 0.05);
-  border-left: 4px solid var(--steady-primary);
-  border-radius: 4px;
-  padding: 1rem;
-  margin: 1rem 0;
-  backdrop-filter: blur(5px);
+  background: var(--ss-bg-elev);
+  border: 1px solid var(--ss-border);
+  border-left: 3px solid var(--ss-accent);
+  border-radius: var(--ss-radius);
+  padding: 0.9rem 1.15rem;
+  margin: 1.25rem 0;
+  transition: border-color 0.2s;
+}
+
+.md-typeset details[open] {
+  border-left-color: var(--ss-accent-hover);
+  background: var(--ss-bg-elev);
 }
 
 .md-typeset details summary {
   font-weight: 600;
-  color: var(--steady-secondary);
+  color: var(--ss-text-bright);
   cursor: pointer;
   user-select: none;
-  transition: color 0.2s;
+  padding: 0.15rem 0;
+  transition: color 0.15s;
 }
 
 .md-typeset details summary:hover {
-  color: var(--steady-primary);
+  color: var(--ss-accent);
 }
 
-.md-typeset details[open] {
-  background: rgba(255, 107, 53, 0.08);
+.md-typeset details > *:last-child {
+  margin-bottom: 0;
 }
 
+/* ============================================================
+   7. TABS
+   ============================================================ */
 .md-typeset .tabbed-set {
-  border: 2px solid rgba(255, 107, 53, 0.2);
-  border-radius: 8px;
-  padding: 1rem;
-  background: rgba(10, 14, 39, 0.4);
+  border: 1px solid var(--ss-border);
+  border-radius: var(--ss-radius);
+  background: var(--ss-bg-card);
   margin: 1.5rem 0;
+  overflow: hidden;
 }
 
 .md-typeset .tabbed-labels {
-  border-bottom: 2px solid var(--steady-primary);
+  background: var(--ss-bg-elev);
+  border-bottom: 1px solid var(--ss-border);
+  display: flex;
+  gap: 0;
 }
 
 .md-typeset .tabbed-labels > label {
-  color: rgba(255, 255, 255, 0.7);
+  color: var(--ss-text-dim);
   font-weight: 600;
-  transition: all 0.2s;
+  font-size: 0.85rem;
+  padding: 0.65rem 1.15rem;
+  border-bottom: 2px solid transparent;
+  transition: color 0.15s, border-color 0.15s;
+  cursor: pointer;
 }
 
 .md-typeset .tabbed-labels > label:hover {
-  color: var(--steady-secondary);
+  color: var(--ss-text-bright);
 }
 
 .md-typeset .tabbed-set > input:checked + label {
-  color: var(--steady-primary);
-  border-bottom: 3px solid var(--steady-primary);
+  color: var(--ss-accent);
+  border-bottom-color: var(--ss-accent);
 }
 
-.md-typeset pre > code {
-  background: rgba(5, 8, 18, 0.8);
-  border: 1px solid rgba(255, 107, 53, 0.2);
-  border-radius: 4px;
+.md-typeset .tabbed-content {
+  padding: 1.15rem 1.25rem;
 }
 
-.md-typeset table {
-  border: 2px solid rgba(255, 107, 53, 0.2);
-  border-radius: 8px;
-  overflow: hidden;
-  background: rgba(10, 14, 39, 0.4);
-}
-
-.md-typeset table thead {
-  background: rgba(255, 107, 53, 0.15);
-}
-
-.md-typeset table th {
-  color: var(--steady-primary);
-  font-weight: 700;
-  border-bottom: 2px solid var(--steady-primary);
-}
-
-.md-typeset table tr:hover {
-  background: rgba(255, 107, 53, 0.05);
-}
-
+/* ============================================================
+   8. ADMONITIONS
+   ============================================================ */
 .md-typeset .admonition {
-  border-left: 4px solid var(--steady-accent);
-  background: rgba(0, 217, 255, 0.05);
-  border-radius: 4px;
+  border-left: 3px solid var(--ss-note);
+  background: var(--ss-bg-elev);
+  border-radius: var(--ss-radius);
+  box-shadow: none;
+  margin: 1.25rem 0;
 }
 
-.md-typeset .admonition.note {
-  border-left-color: var(--steady-accent);
-}
+.md-typeset .admonition.note    { border-left-color: var(--ss-note); }
+.md-typeset .admonition.warning { border-left-color: var(--ss-warn); }
+.md-typeset .admonition.tip     { border-left-color: var(--ss-tip);  }
 
-.md-typeset .admonition.warning {
-  border-left-color: #ffa726;
-  background: rgba(255, 167, 38, 0.05);
-}
-
-.md-typeset .admonition.tip {
-  border-left-color: #66bb6a;
-  background: rgba(102, 187, 106, 0.05);
-}
-
+/* ============================================================
+   9. BLOCKQUOTES
+   ============================================================ */
 .md-typeset blockquote {
-  border-left: 4px solid var(--steady-secondary);
-  background: rgba(247, 147, 30, 0.05);
-  padding: 1rem;
+  border-left: 3px solid var(--ss-border-lt);
+  background: var(--ss-bg-elev);
+  padding: 0.85rem 1.15rem;
+  margin: 1.25rem 0;
+  border-radius: 0 var(--ss-radius) var(--ss-radius) 0;
+  color: var(--ss-text-dim);
   font-style: italic;
 }
 
+/* ============================================================
+   10. HERO SECTION
+   ============================================================ */
+.hero-section {
+  text-align: center;
+  padding: 3.5rem 1.5rem 3rem;
+  background: var(--ss-bg-elev);
+  border: 1px solid var(--ss-border);
+  border-radius: var(--ss-radius-lg);
+  margin-bottom: 2.5rem;
+}
+
+.hero-section h1 {
+  font-size: 2.6rem;
+  color: var(--ss-white);
+  border: none;
+  margin-bottom: 0.6rem;
+  letter-spacing: -0.03em;
+}
+
+@media (max-width: 600px) {
+  .hero-section h1 { font-size: 1.8rem; }
+  .hero-section     { padding: 2.25rem 1rem 2rem; }
+}
+
+.hero-tagline {
+  font-size: 1.15rem;
+  color: var(--ss-text-dim);
+  margin-bottom: 2rem;
+  font-weight: 400;
+  max-width: 36rem;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+}
+
+/* ============================================================
+   11. CTA BUTTON
+   ============================================================ */
+.cta-button {
+  display: inline-block;
+  background: var(--ss-accent);
+  color: var(--ss-white);
+  padding: 0.75rem 1.75rem;
+  border-radius: var(--ss-radius);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0.01em;
+  transition: background 0.2s, box-shadow 0.2s;
+  border: none;
+  cursor: pointer;
+}
+
+.cta-button:hover,
+.cta-button:focus-visible {
+  background: var(--ss-accent-hover);
+  box-shadow: 0 4px 16px rgba(91, 159, 164, 0.35);
+  color: var(--ss-white);
+  text-decoration: none;
+}
+
+/* ============================================================
+   12. CARD GRID
+   ============================================================ */
 .card-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.25rem;
   margin: 2rem 0;
 }
 
 .card {
-  background: rgba(255, 107, 53, 0.08);
-  border: 2px solid rgba(255, 107, 53, 0.2);
-  border-radius: 8px;
-  padding: 1.5rem;
-  transition: all 0.3s ease;
-  backdrop-filter: blur(5px);
+  background: var(--ss-bg-elev);
+  border: 1px solid var(--ss-border);
+  border-radius: var(--ss-radius);
+  padding: 1.35rem 1.4rem;
+  transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
 }
 
 .card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 24px rgba(255, 107, 53, 0.3);
-  border-color: var(--steady-primary);
+  border-color: var(--ss-accent);
+  box-shadow: var(--ss-shadow-lg);
+  transform: translateY(-3px);
 }
 
 .card h3 {
   margin-top: 0;
-  color: var(--steady-primary);
+  color: var(--ss-text-bright);
+  font-size: 1.05rem;
 }
 
-.hero-section {
-  text-align: center;
-  padding: 3rem 1rem;
-  background: linear-gradient(135deg, rgba(255, 107, 53, 0.1) 0%, rgba(247, 147, 30, 0.05) 100%);
-  border-radius: 12px;
-  margin-bottom: 3rem;
-  border: 2px solid rgba(255, 107, 53, 0.2);
+.card p {
+  color: var(--ss-text-dim);
+  font-size: 0.88rem;
+  margin-bottom: 0;
 }
 
-.hero-section h1 {
-  font-size: 3rem;
-  margin-bottom: 1rem;
-  border: none;
+/* ============================================================
+   13. NAVIGATION / HEADER OVERRIDES
+   ============================================================ */
+.md-header {
+  background: var(--ss-bg);
+  border-bottom: 1px solid var(--ss-border);
+  box-shadow: none;
 }
 
-.hero-tagline {
-  font-size: 1.3rem;
-  color: var(--steady-secondary);
-  margin-bottom: 2rem;
-  font-weight: 300;
+.md-tabs {
+  background: var(--ss-bg);
+  border-bottom: 1px solid var(--ss-border);
 }
 
-.cta-button {
-  display: inline-block;
-  background: var(--steady-primary);
-  color: white;
-  padding: 1rem 2rem;
-  border-radius: 6px;
-  text-decoration: none;
-  font-weight: 600;
-  transition: all 0.3s;
-  border: none;
+.md-tabs__link {
+  color: var(--ss-text-dim);
+  transition: color 0.15s;
+}
+.md-tabs__link:hover,
+.md-tabs__link--active {
+  color: var(--ss-accent);
 }
 
-.cta-button:hover {
-  background: var(--steady-secondary);
-  transform: scale(1.05);
-  box-shadow: 0 8px 24px rgba(255, 107, 53, 0.4);
+/* Sidebar */
+.md-sidebar { background: transparent; }
+
+.md-nav__link {
+  color: var(--ss-text-dim);
+  transition: color 0.15s;
+}
+.md-nav__link:hover,
+.md-nav__link--active {
+  color: var(--ss-accent);
+}
+
+/* Search */
+.md-search__input {
+  background: var(--ss-bg-elev);
+  border: 1px solid var(--ss-border);
+  color: var(--ss-text);
+}
+
+/* Footer */
+.md-footer {
+  background: var(--ss-bg);
+  border-top: 1px solid var(--ss-border);
+}
+
+/* ============================================================
+   14. SCROLLBAR (Webkit)
+   ============================================================ */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: var(--ss-bg); }
+::-webkit-scrollbar-thumb {
+  background: var(--ss-border-lt);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover { background: var(--ss-text-dim); }
+
+/* ============================================================
+   15. SELECTION
+   ============================================================ */
+::selection {
+  background: rgba(91, 159, 164, 0.3);
+  color: var(--ss-white);
+}
+
+/* ============================================================
+   16. FOCUS VISIBLE (Accessibility)
+   ============================================================ */
+:focus-visible {
+  outline: 2px solid var(--ss-accent);
+  outline-offset: 2px;
 }
