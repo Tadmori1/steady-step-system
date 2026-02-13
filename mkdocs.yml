@@ -112,3 +112,5 @@ nav:
     - Contact: about/contact.md
     - Community Guidelines: about/community-guidelines.md
   - Changelog: changelog.md
+  - Project brief: PROJECT_BRIEF.md
+
